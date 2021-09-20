@@ -80,6 +80,12 @@ export class NatureRemoLightbulb implements AccessoryPlugin {
     this.logger.debug("handleOnSet", { power });
 
     if (this.config.brightnessMapper) {
+      if (power && this.brightness === 0) {
+        this.brightness = this.config.defaultBrightness ?? 80;
+      } else if (!power) {
+        this.brightness = 0;
+      }
+
       return await this.setBrightness(this.brightness);
     }
 

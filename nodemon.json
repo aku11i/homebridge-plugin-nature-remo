@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": [],
+  "exec": "homebridge --debug --plugin-path . --user-storage-path ./.homebridge"
+}

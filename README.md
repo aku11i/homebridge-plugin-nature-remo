@@ -1,4 +1,4 @@
-# @aku11i/homebridge-nature-remo
+# @aku11i/homebridge-plugin-nature-remo
 
 自分用に書いた Homebridge 向けの Nature Remo プラグインです。
 
@@ -7,11 +7,11 @@
 ## インストール
 
 ```sh
-npm install --global @aku11i/homebridge-nature-remo
+npm install --global @aku11i/homebridge-plugin-nature-remo
 ```
 
 ## プラグイン一覧
 
 ### Lightbulb（照明）
 
-https://github.com/aku11i/homebridge-nature-remo/blob/main/src/plugins/lightbulb
+https://github.com/aku11i/homebridge-plugin-nature-remo/blob/main/src/plugins/lightbulb

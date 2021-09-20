@@ -1,9 +1,10 @@
 {
-  "name": "@aku11i/homebridge-nature-remo",
+  "name": "@aku11i/homebridge-plugin-nature-remo",
   "version": "0.1.0",
   "description": "Homebridge plugin for Nature Remo",
   "main": "main.js",
   "files": [
+    "main.js",
     "dist"
   ],
   "engines": {

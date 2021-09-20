@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "description": "Homebridge plugin for Nature Remo",
   "main": "main.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "homebridge": ">=1.3.0"
   },

@@ -14,7 +14,8 @@
     "precodegen": "shx rm -rf src/api",
     "codegen": "openapi-generator generate --input-spec https://swagger.nature.global/swagger.yml --generator-name typescript-axios --output src/api",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "standard-version"
   },
   "keywords": [
     "homebridge-plugin"

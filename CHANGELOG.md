@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/aku11i/homebridge-plugin-nature-remo/compare/v0.2.1...v0.2.2) (2021-10-09)
+
+
+### Features
+
+* APIリクエストにキューを使用する ([#1](https://github.com/aku11i/homebridge-plugin-nature-remo/issues/1)) ([8c2ca1a](https://github.com/aku11i/homebridge-plugin-nature-remo/commit/8c2ca1a8c0e2a40859b09121264b70e3afebdb42))
+
 ### [0.2.1](https://github.com/aku11i/homebridge-plugin-nature-remo/compare/v0.2.0...v0.2.1) (2021-09-20)
 
 

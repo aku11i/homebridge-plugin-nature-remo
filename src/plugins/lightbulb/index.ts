@@ -9,6 +9,7 @@ import type {
 } from "homebridge";
 
 import { NatureRemoApi, Configuration } from "../../api";
+import { withApiQueue } from "../../queue";
 import { ApplianceNotFoundError } from "../../errors/ApplianceNotFoundError";
 import { ConfigNotDefinedError } from "../../errors/ConfigNotDefinedError";
 import { Command } from "../../types";
@@ -67,7 +68,9 @@ export class NatureRemoLightbulb implements AccessoryPlugin {
   }
 
   private handleOnGet: CharacteristicGetHandler = async () => {
-    const { data } = await this.natureRemo._1appliancesGet();
+    const { data } = await withApiQueue(() =>
+      this.natureRemo._1appliancesGet()
+    );
     const appliance = data.find((_) => _.id === this.config.id);
     if (!appliance) {
       throw new ApplianceNotFoundError(this.config.id);
@@ -89,11 +92,13 @@ export class NatureRemoLightbulb implements AccessoryPlugin {
       return await this.setBrightness(this.brightness);
     }
 
-    await this.natureRemo._1appliancesApplianceLightPost(
-      this.config.id,
-      power
-        ? this.config.powerMapper?.on ?? "on"
-        : this.config.powerMapper?.off ?? "off"
+    await withApiQueue(() =>
+      this.natureRemo._1appliancesApplianceLightPost(
+        this.config.id,
+        power
+          ? this.config.powerMapper?.on ?? "on"
+          : this.config.powerMapper?.off ?? "off"
+      )
     );
   };
 
@@ -125,15 +130,16 @@ export class NatureRemoLightbulb implements AccessoryPlugin {
 
     if (!command) return;
 
-    if (command.button) {
-      this.logger.debug("send", command);
-      await this.natureRemo._1appliancesApplianceLightPost(
-        this.config.id,
-        command.button
+    const { button, signal } = command;
+
+    if (button) {
+      this.logger.debug("send", { button });
+      await withApiQueue(() =>
+        this.natureRemo._1appliancesApplianceLightPost(this.config.id, button)
       );
-    } else if (command.signal) {
-      this.logger.debug("send", command);
-      await this.natureRemo._1signalsSignalSendPost(command.signal);
+    } else if (signal) {
+      this.logger.debug("send", { signal });
+      await withApiQueue(() => this.natureRemo._1signalsSignalSendPost(signal));
     }
   }
 }

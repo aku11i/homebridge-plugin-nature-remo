@@ -27,7 +27,8 @@
   "author": "aku11i",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.4"
+    "axios": "^0.21.4",
+    "p-queue": "^6.6.2"
   },
   "devDependencies": {
     "@types/node": "^16.9.4",
